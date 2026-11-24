@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ផារ៉ា Smos | PHARA-STORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@500;600;700&family=Moul&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Kantumruy Pro', 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background-color: #111827;
+    }
+
+    /* ផ្ទៃខាងក្រោយពេញអេក្រង់ច្បាស់ល្អ */
+    .bg-wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
+    }
+
+    /* អក្សរខាងលើ "ផារ៉ា Smos" */
+    .top-title {
+      font-family: 'Moul', 'Kantumruy Pro', serif;
+      color: #ffffff;
+      text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.85),
+        0 0 14px rgba(0, 0, 0, 0.55);
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .top-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2.5px;
+      background-color: #ffffff;
+      border-radius: 999px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+    }
+
+    /* ប៊ូតុងកាតពណ៌សទាំង 3 */
+    .link-btn {
+      background: rgba(255, 255, 255, 0.96);
+      color: #18181b;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+
+    .link-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+    }
+
+    .link-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ឡូហ្គោខាងក្រោម "ផារ៉ា PHARA-STORE" ពណ៌ទឹកប៊ិចចាស់ ស៊ុមពណ៌ស */
+    .brand-khmer {
+      font-family: 'Moul', serif;
+      color: #162b75;
+      -webkit-text-stroke: 6px #ffffff;
+      paint-order: stroke fill;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+      line-height: 1.25;
+    }
+
+    .brand-en {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: #162b75;
+      -webkit-text-stroke: 4.5px #ffffff;
+      paint-order: stroke fill;
+      letter-spacing: 1px;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+      line-height: 1.15;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+
+  <!-- ផ្ទៃខាងក្រោយរូបភាព -->
+  <div class="bg-wrapper">
+    <img
+      id="bgImage"
+      src="https://lh3.googleusercontent.com/d/1D9WPvJRYEWMFmNpypTWibkSPL1R1VTql=s0"
+      alt="ផារ៉ា Smos Background"
+      class="bg-image"
+    />
+  </div>
+
+  <!-- របារប៊ូតុង "ប្តូររូប" និង "Settings" នៅជ្រុងខាងស្តាំលើ -->
+  <div class="fixed top-4 right-4 z-20 flex items-center gap-2">
+    <label
+      for="quickBgUpload"
+      class="cursor-pointer px-3.5 py-2 rounded-full bg-white/95 hover:bg-white text-gray-800 text-xs font-bold flex items-center gap-1.5 shadow-lg border border-gray-200 transition active:scale-95"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span>ប្តូររូប</span>
+    </label>
+    <input id="quickBgUpload" type="file" accept="image/*" class="hidden" />
+
+    <button
+      id="openSettingsBtn"
+      title="កែប្រែតំណភ្ជាប់ ឬរូបភាព"
+      class="w-9 h-9 rounded-full bg-white/95 hover:bg-white text-gray-800 flex items-center justify-center border border-gray-200 shadow-lg transition active:scale-95"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ខ្លឹមសារកណ្តាលអេក្រង់ទាំង 3 ផ្នែក -->
+  <main class="relative z-10 w-full max-w-[400px] px-5 py-8 flex flex-col items-center justify-center gap-9 sm:gap-10 text-center">
+    
+    <!-- ផ្នែកខាងលើ៖ ផារ៉ា Smos -->
+    <header>
+      <h1 class="top-title text-[24px] sm:text-[26px] font-bold">
+        ផារ៉ា <span style="font-family: 'Poppins', sans-serif; font-weight: 800;">Smos</span>
+      </h1>
+    </header>
+
+    <!-- ផ្នែកកណ្តាល៖ ប៊ូតុងទាំង 3 -->
+    <section class="w-full flex flex-col gap-3.5">
+      <!-- ប៊ូតុងទី 1: Telegram -->
+      <a
+        id="btnTelegram"
+        href="https://t.me/CheavSophara"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-btn w-full py-4 px-5 flex items-center justify-center text-[16px] sm:text-[17px] font-bold"
+      >
+        <span>Telegram Admin Phara</span>
+      </a>
+
+      <!-- ប៊ូតុងទី 2: TikTok -->
+      <a
+        id="btnTiktok"
+        href="https://www.tiktok.com/@bee_cheng0?is_from_webapp=1&sender_device=pc"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-btn w-full py-4 px-5 flex items-center justify-center gap-2 text-[16px] sm:text-[17px] font-bold"
+      >
+        <span>TikTok</span>
+        <span class="text-[19px] leading-none">🎵</span>
+      </a>
+
+      <!-- ប៊ូតុងទី 3: YouTube -->
+      <a
+        id="btnYoutube"
+        href="https://www.youtube.com/@beecheng0"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-btn w-full py-4 px-5 flex items-center justify-center gap-2 text-[16px] sm:text-[17px] font-bold"
+      >
+        <span>YouTube Channel</span>
+        <span class="inline-flex items-center justify-center w-6 h-5 rounded-[5px] bg-[#3b82f6] text-white shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </a>
+    </section>
+
+    <!-- ផ្នែកខាងក្រោម៖ ឡូហ្គោ ផារ៉ា PHARA-STORE -->
+    <footer class="flex flex-col items-center select-none">
+      <div class="brand-khmer text-[44px] sm:text-[48px]">ផារ៉ា</div>
+      <div class="brand-en text-[25px] sm:text-[28px] -mt-1">PHARA-STORE</div>
+    </footer>
+
+  </main>
+
+  <!-- ផ្ទាំងកំណត់ (Settings Modal) -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl p-6 shadow-2xl text-gray-800">
+      <div class="flex items-center justify-between border-b pb-3 mb-4">
+        <h2 class="text-lg font-bold text-gray-900">⚙️ កែប្រែតំណភ្ជាប់ និងផ្ទៃខាងក្រោយ</h2>
+        <button id="closeSettingsBtn" class="text-gray-400 hover:text-gray-700 text-2xl leading-none">&times;</button>
+      </div>
+
+      <div class="space-y-3.5 text-sm">
+        <div>
+          <label class="block font-semibold mb-1">តំណ Telegram Admin Phara</label>
+          <input id="inputTelegram" type="url" class="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">តំណ TikTok</label>
+          <input id="inputTiktok" type="url" class="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">តំណ YouTube Channel</label>
+          <input id="inputYoutube" type="url" class="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">តំណរូបភាពផ្ទៃខាងក្រោយ (Google Drive ឬ URL)</label>
+          <input id="inputBgUrl" type="text" class="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between gap-2 mt-6 pt-3 border-t">
+        <button id="resetBtn" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition">
+          កំណត់ឡើងវិញ
+        </button>
+        <div class="flex gap-2">
+          <button id="cancelBtn" class="px-4 py-2 rounded-xl text-sm font-semibold bg-gray-100 hover:bg-gray-200 transition">
+            បោះបង់
+          </button>
+          <button id="saveBtn" class="px-5 py-2 rounded-xl text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">
+            រក្សាទុក
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_DRIVE_ID = '1D9WPvJRYEWMFmNpypTWibkSPL1R1VTql';
+    const DEFAULTS = {
+      telegram: 'https://t.me/CheavSophara',
+      tiktok: 'https://www.tiktok.com/@bee_cheng0?is_from_webapp=1&sender_device=pc',
+      youtube: 'https://www.youtube.com/@beecheng0',
+      bgRaw: `https://drive.google.com/file/d/${DEFAULT_DRIVE_ID}/view?usp=sharing`
+    };
+
+    const bgImage = document.getElementById('bgImage');
+    const btnTelegram = document.getElementById('btnTelegram');
+    const btnTiktok = document.getElementById('btnTiktok');
+    const btnYoutube = document.getElementById('btnYoutube');
+
+    function getDriveFallbacks(url) {
+      if (!url) return [];
+      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        const id = match[1];
+        return [
+          `https://lh3.googleusercontent.com/d/${id}=s0`,
+          `https://drive.google.com/uc?export=view&id=${id}`,
+          `https://drive.google.com/thumbnail?id=${id}&sz=w1920`
+        ];
+      }
+      return [url];
+    }
+
+    function applyBackground(rawUrl) {
+      const candidates = getDriveFallbacks(rawUrl);
+      let index = 0;
+
+      function tryLoad() {
+        if (index >= candidates.length) return;
+        bgImage.src = candidates[index];
+      }
+
+      bgImage.onerror = () => {
+        index++;
+        tryLoad();
+      };
+
+      tryLoad();
+    }
+
+    function loadSettings() {
+      const saved = JSON.parse(localStorage.getItem('phara_smos_config') || '{}');
+      const config = { ...DEFAULTS, ...saved };
+
+      btnTelegram.href = config.telegram;
+      btnTiktok.href = config.tiktok;
+      btnYoutube.href = config.youtube;
+      applyBackground(config.bgRaw);
+
+      document.getElementById('inputTelegram').value = config.telegram;
+      document.getElementById('inputTiktok').value = config.tiktok;
+      document.getElementById('inputYoutube').value = config.youtube;
+      document.getElementById('inputBgUrl').value = config.bgRaw.startsWith('data:') ? '' : config.bgRaw;
+    }
+
+    // ប៊ូតុង "ប្តូររូប" រហ័ស
+    document.getElementById('quickBgUpload').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const currentSaved = JSON.parse(localStorage.getItem('phara_smos_config') || '{}');
+        currentSaved.bgRaw = reader.result;
+        localStorage.setItem('phara_smos_config', JSON.stringify(currentSaved));
+        bgImage.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Modal Controls
+    const modal = document.getElementById('settingsModal');
+    document.getElementById('openSettingsBtn').onclick = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    };
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+    document.getElementById('closeSettingsBtn').onclick = closeModal;
+    document.getElementById('cancelBtn').onclick = closeModal;
+
+    // រក្សាទុកការកំណត់
+    document.getElementById('saveBtn').onclick = () => {
+      const currentSaved = JSON.parse(localStorage.getItem('phara_smos_config') || '{}');
+      const urlInput = document.getElementById('inputBgUrl').value.trim();
+
+      const updated = {
+        telegram: document.getElementById('inputTelegram').value.trim() || DEFAULTS.telegram,
+        tiktok: document.getElementById('inputTiktok').value.trim() || DEFAULTS.tiktok,
+        youtube: document.getElementById('inputYoutube').value.trim() || DEFAULTS.youtube,
+        bgRaw: urlInput || currentSaved.bgRaw || DEFAULTS.bgRaw
+      };
+
+      localStorage.setItem('phara_smos_config', JSON.stringify(updated));
+      loadSettings();
+      closeModal();
+    };
+
+    // កំណត់ឡើងវិញទៅលំនាំដើម
+    document.getElementById('resetBtn').onclick = () => {
+      localStorage.removeItem('phara_smos_config');
+      loadSettings();
+      closeModal();
+    };
+
+    loadSettings();
+  </script>
+</body>
+</html>
